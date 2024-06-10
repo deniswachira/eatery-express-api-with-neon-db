@@ -1,0 +1,148 @@
+# Users API
+
+###
+GET http://localhost:8000/ok
+
+### only admin can access this route
+GET http://localhost:8000/api/users  
+Authorization: your token
+
+###
+GET http://localhost:8000/api/users/1
+
+###
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+    "fullname": "Kibet Kibet",
+    "email": "kibet@gmail.com",
+    "phone": 2547123456786
+}
+
+
+###Authenticating a user
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "username": "denis",
+    "password": "pass",
+    "role": "admin"
+}
+
+### user authenticating and getting token
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "brian",
+    "password": "pass"
+}
+
+### admin authenticating and getting token
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "denis",
+    "password": "pass"
+}
+
+###
+PUT http://localhost:8000/api/users/10
+Content-Type: application/json
+
+{
+    "fullname": "Smith Updated"
+}
+
+###
+DELETE http://localhost:8000/api/users/5
+
+# Restaurant API
+
+###
+GET http://localhost:8000/api/restaurants
+
+###
+GET http://localhost:8000/api/restaurants/1
+
+###
+POST http://localhost:8000/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Java House",
+    "street_address": "001-0100",
+    "zip_code": "0100",
+    "city_id": 1
+}
+
+#Cities API
+
+###
+GET http://localhost:8000/api/cities
+
+###
+GET http://localhost:8000/api/cities/1
+
+###
+GET  http://localhost:8000/api/cities-with-restaurants
+
+###
+GET http://localhost:8000/api/state-with-cities
+
+###
+POST http://localhost:8000/api/cities
+Content-Type: application/json
+
+{
+    "name": "Nairobi"
+}
+
+###
+PUT http://localhost:8000/api/cities/1
+Content-Type: application/json
+
+{
+    "name": "Nairobi Updated"
+}
+
+###
+DELETE http://localhost:8000/api/cities/1
+
+# Orders API
+
+###
+GET http://localhost:8000/api/orders
+
+###
+GET http://localhost:8000/api/orders/1
+
+###
+POST http://localhost:8000/api/orders
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "driver_id": 1,
+    "restaurant_id": 1,
+    "delivery_address_id": 1,
+    "price": "30.00",
+    "discount": "5.00",
+    "final_price": "25.00"
+}
+
+###
+PUT http://localhost:8000/api/orders/1
+Content-Type: application/json
+
+{
+    "price": "40.00"
+}
+
+###
+DELETE http://localhost:8000/api/orders/1
+
