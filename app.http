@@ -5,7 +5,7 @@ GET http://localhost:8000/ok
 
 ### only admin can access this route
 GET http://localhost:8000/api/users  
-Authorization: your token
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MDk0NDUxfQ.1uU6rqUfOVpIoTU4jA6wCEQ4p3vOjBaZu4Oxazmw3a4
 
 ###
 GET http://localhost:8000/api/users/1
@@ -91,6 +91,7 @@ GET http://localhost:8000/api/cities/1
 
 ###
 GET  http://localhost:8000/api/cities-with-restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MDk0NDUxfQ.1uU6rqUfOVpIoTU4jA6wCEQ4p3vOjBaZu4Oxazmw3a4
 
 ###
 GET http://localhost:8000/api/state-with-cities
