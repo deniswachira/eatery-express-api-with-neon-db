@@ -20,4 +20,4 @@ userRouter.post('/users',zValidator('json',createUserValidator,(result,c)=>{
 userRouter.put('/users/:id', updateUser)
 
 //delete user
-userRouter.delete('/users/:id', deleteUser)
+userRouter.delete('/users/:id',adminRoleAuth, deleteUser)

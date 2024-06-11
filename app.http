@@ -60,6 +60,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8000/api/users/5
+Authorization: 
 
 # Restaurant API
 

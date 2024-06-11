@@ -24,8 +24,8 @@ const {printMetrics, registerMetrics} = prometheus()
 //3rd party middleware
 app.use('*', registerMetrics)
 //default routes
-app.get('/ok', (c) => {
-  return c.text('The server is running ')
+app.get('/', (c) => {
+  return c.text('EateryExpress API  Running🚀')
 })
 app.notFound((c) => {
   return c.text('Route Not Found', 404)

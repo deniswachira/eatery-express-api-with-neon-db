@@ -1,5 +1,6 @@
 import {Hono} from "hono"
 import { deleteCity, getCityById, getCityWithRestaurants, insertCity, listAllCities, updateCity } from "./city.controller";
+import { userRoleAuth } from "../middleWare/bearAuth";
 
 export const cityRouter = new Hono();
 
@@ -19,4 +20,4 @@ cityRouter.put('/cities/:id', updateCity)
 cityRouter.delete('/cities/:id', deleteCity)
 
 //get city with restaurants
-cityRouter.get("/cities-with-restaurants", getCityWithRestaurants)
+cityRouter.get("/cities-with-restaurants",userRoleAuth, getCityWithRestaurants)
