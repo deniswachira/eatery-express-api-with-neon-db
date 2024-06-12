@@ -5,7 +5,7 @@ import { adminRoleAuth, bothRolesAuth, userRoleAuth } from "../middleWare/bearAu
 export const cityRouter = new Hono();
 
 //get all cities
-cityRouter.get('/cities',bothRolesAuth,adminRoleAuth, listAllCities)
+cityRouter.get('/cities',adminRoleAuth, listAllCities)
 
 //get city by id
 cityRouter.get('/cities/:id',adminRoleAuth, getCityById)
@@ -20,4 +20,4 @@ cityRouter.put('/cities/:id',adminRoleAuth, updateCity)
 cityRouter.delete('/cities/:id',adminRoleAuth, deleteCity)
 
 //get city with restaurants
-cityRouter.get("/cities-with-restaurants",bothRolesAuth, getCityWithRestaurants)
+cityRouter.get("/cities-with-restaurants",adminRoleAuth, getCityWithRestaurants)
