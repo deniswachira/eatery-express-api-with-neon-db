@@ -19,4 +19,4 @@ stateRouter.put('/state/:id',adminRoleAuth, updateState)
 //delete state
 stateRouter.delete("/state/:id",adminRoleAuth, deleteState)
 
-stateRouter.get("/state-with-cities",bothRolesAuth, getStateWithCities)
+stateRouter.get("/state-with-cities",adminRoleAuth, getStateWithCities)
