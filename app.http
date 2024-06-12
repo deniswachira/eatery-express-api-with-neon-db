@@ -91,10 +91,11 @@ GET http://localhost:8000/api/cities/1
 
 ###
 GET  http://localhost:8000/api/cities-with-restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MDk0NDUxfQ.1uU6rqUfOVpIoTU4jA6wCEQ4p3vOjBaZu4Oxazmw3a4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MjM1MjIxfQ.G_GWyxdazq8teaXtcfKkJTx_TdlQhpxSJEo8xzBA1Lo
 
 ###
 GET http://localhost:8000/api/state-with-cities
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MjM1MjIxfQ.G_GWyxdazq8teaXtcfKkJTx_TdlQhpxSJEo8xzBA1Lo
 
 ###
 POST http://localhost:8000/api/cities
@@ -114,7 +115,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:8000/api/cities/1
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MjM1MjIxfQ.G_GWyxdazq8teaXtcfKkJTx_TdlQhpxSJEo8xzBA1Lo
 # Orders API
 
 ###
@@ -122,6 +123,10 @@ GET http://localhost:8000/api/orders
 
 ###
 GET http://localhost:8000/api/orders/1
+
+###
+GET http://localhost:8000/api/order-with-details/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImRlbmlzIiwiZXhwIjoxNzE4MjM1MjIxfQ.G_GWyxdazq8teaXtcfKkJTx_TdlQhpxSJEo8xzBA1Lo
 
 ###
 POST http://localhost:8000/api/orders

@@ -28,3 +28,16 @@ export const deleteOrderService = async(id:number) => {
     await db.delete(order_table).where(eq(order_table.order_id,id));
     return "Order deleted successfully 🎉"
 }
+
+// get order details
+export const getOrderDetailsService = async (id:number):Promise<TOrderSelect | undefined> => {
+         return await db.query.order_table.findFirst({
+        where: eq(order_table.order_id, id),
+        with:{
+            user:true,
+            driver:true,
+            restaurant:true,
+            delivey_address:true,
+        }
+    })
+}

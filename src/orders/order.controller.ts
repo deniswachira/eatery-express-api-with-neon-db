@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { deleteOrderService, getOrderByIdService, insertOrderService, ordersService, updateOrderService } from "./order.service";
+import { deleteOrderService, getOrderByIdService, getOrderDetailsService, insertOrderService, ordersService, updateOrderService } from "./order.service";
 
 //list orders
 export const listOrders = async (c:Context) => {
@@ -72,6 +72,21 @@ export const deleteOrder = async (c:Context) => {
         //delete order
         const deletedOrder = await deleteOrderService(id);
         return c.json({msg: deletedOrder},200)
+    } catch (error:any) {
+        return c.text(error?.message,400)
+    }
+}
+
+//get order details
+export const getOrderDetails = async (c:Context) => {
+    // return c.text("Not implemented yet",501)
+    const id = parseInt(c.req.param("id"));
+    try{
+        if(isNaN(id))    return c.text("Invalid ID 😒",400)
+        //search for order
+        const order = await getOrderDetailsService(id);
+        if(order == undefined) return c.text("Order not found 😒",404)
+        return c.json(order,200)
     } catch (error:any) {
         return c.text(error?.message,400)
     }

@@ -205,7 +205,7 @@ export const state_city_relation = relations(state_table, ({ many }) => ({
 }));
 
 //relation user(1) --> (1) address user(1) --> (1)city user(1) --> (1)state
-export const user_address_relation = relations(user_table, ({ one }) => ({
+export const user_address_relation = relations(user_table, ({ one,many }) => ({
     address: one(address_table,{
         fields: [user_table.user_id],
         references: [address_table.address_id]
@@ -217,7 +217,31 @@ export const user_address_relation = relations(user_table, ({ one }) => ({
     state: one(state_table,{
         fields: [user_table.user_id],
         references: [state_table.state_id]
-    })
+    }),
+    orders: many(order_table)
+}));
+
+// orer(1) --> (1) user order(1) --> (1) driver order(1) --> (1) restaurant order(1) --> (1) address
+export const order_user_relation = relations(order_table, ({ one,many }) => ({
+    user: one(user_table, {
+        fields: [order_table.user_id],
+        references: [user_table.user_id]
+    }),
+    driver: one(driver_table, {
+        fields: [order_table.driver_id],
+        references: [driver_table.driver_id]
+    }),
+    restaurant: one(restaurant_table, {
+        fields: [order_table.restaurant_id],
+        references: [restaurant_table.restaurant_id]
+    }),
+    delivey_address: one(address_table, {
+        fields: [order_table.delivery_address_id],
+        references: [address_table.address_id]
+    }),
+    order_menus: many(order_menu_table),
+    order_status: many(order_status_table),
+    comments: many(comment_table)
 }));
 
 

@@ -1,5 +1,5 @@
 import {Hono} from "hono"
-import { deleteOrder, getOrderById, insertOrder, listOrders, updateOrder } from "./order.controller";
+import { deleteOrder, getOrderById, getOrderDetails, insertOrder, listOrders, updateOrder } from "./order.controller";
 import { adminRoleAuth, bothRolesAuth } from "../middleWare/bearAuth";
 
 export const orderRouter = new Hono();
@@ -8,10 +8,13 @@ export const orderRouter = new Hono();
 orderRouter.get('/orders',adminRoleAuth, listOrders)
 
 //get order by id
-orderRouter.get('/orders/:id',bothRolesAuth, getOrderById)
+orderRouter.get('/orders/:id',adminRoleAuth, getOrderById)
+
+// get order details
+orderRouter.get('/order-with-details/:id',adminRoleAuth, getOrderDetails)
 
 //insert order
-orderRouter.post('/orders',bothRolesAuth, insertOrder)
+orderRouter.post('/orders',adminRoleAuth, insertOrder)
 
 //update order
 orderRouter.put('/orders/:id',adminRoleAuth, updateOrder)
