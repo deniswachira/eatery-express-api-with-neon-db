@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import { readFile } from 'fs/promises';
 import "dotenv/config"
 import { prometheus } from '@hono/prometheus'
 import { userRouter } from './users/user.router'
@@ -24,9 +25,15 @@ const {printMetrics, registerMetrics} = prometheus()
 //3rd party middleware
 app.use('*', registerMetrics)
 //default routes
-app.get('/', (c) => {
-  return c.text('EateryExpress API  Running🚀')
-})
+app.get('/', async (c) => {
+    try {
+        let html = await readFile('./index.html', 'utf-8');
+        return c.html(html);
+    } catch (err:any) {
+        return c.text(err.message, 500);
+    }
+});
+
 app.notFound((c) => {
   return c.text('Route Not Found', 404)
 })

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EateryExpress API Documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EateryExpress API Documentation</h1>
+      <nav>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#endpoints">Endpoints</a></li>
+          <li><a href="#examples">Examples</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>
+          Welcome to the EateryExpress API documentation. This API allows you to
+          interact with the EateryExpress platform to manage restaurant data,
+          orders, and more.
+        </p>
+      </section>
+      <section id="endpoints">
+        <h2>Endpoints</h2>
+        <h3>GET /restaurants</h3>
+        <p>Retrieve a list of all restaurants.</p>
+        <pre><code>GET /api/restaurants</code></pre>
+
+        <h3>GET /restaurants/:id</h3>
+        <p>Retrieve details of a specific restaurant by ID.</p>
+        <pre><code>GET /api/restaurants/:id</code></pre>
+
+        <h3>POST /orders</h3>
+        <p>Create a new order.</p>
+        <pre><code>POST /api/orders</code></pre>
+        <p>Request Body:</p>
+        <pre><code>{
+    "restaurant_id": "123",
+    "items": [
+        {"item_id": "abc", "quantity": 2},
+        {"item_id": "def", "quantity": 1}
+    ],
+    "customer_name": "John Doe",
+    "address": "123 Main St, Anytown"
+}</code></pre>
+      </section>
+      <section id="examples">
+        <h2>Examples</h2>
+        <h3>Get all restaurants</h3>
+        <pre><code>curl -X GET https://api.eateryexpress.com/api/restaurants</code></pre>
+
+        <h3>Create an order</h3>
+        <pre><code>curl -X POST https://api.eateryexpress.com/api/orders \
+-H "Content-Type: application/json" \
+-d '{
+    "restaurant_id": "123",
+    "items": [
+        {"item_id": "abc", "quantity": 2},
+        {"item_id": "def", "quantity": 1}
+    ],
+    "customer_name": "John Doe",
+    "address": "123 Main St, Anytown"
+}'</code></pre>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          If you have any questions or need further assistance, please contact
+          our API support team at
+          <a href="mailto:api.support@eateryexpress.com"
+            >api.support@eateryexpress.com</a
+          >.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 EateryExpress. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
