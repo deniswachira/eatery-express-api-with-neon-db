@@ -1,19 +1,20 @@
 import {Hono} from 'hono'
 import { deleteComment, getCommentById, insertComment, listComments, updateComment } from './comment.controller'
+import { adminRoleAuth } from '../middleWare/bearAuth'
 
 export const commentRouter = new Hono()
 
 //get all comments
-commentRouter.get('/comments', listComments)
+commentRouter.get('/comments',adminRoleAuth, listComments)
 
 //get comment by id
-commentRouter.get('/comments/:id', getCommentById)
+commentRouter.get('/comments/:id',adminRoleAuth, getCommentById)
 
 //insert comment
-commentRouter.post('/comments', insertComment)
+commentRouter.post('/comments',adminRoleAuth, insertComment)
 
 //update comment
-commentRouter.put('/comments/:id', updateComment)
+commentRouter.put('/comments/:id',adminRoleAuth, updateComment)
 
 //delete comment
-commentRouter.delete('/comments/:id', deleteComment)
+commentRouter.delete('/comments/:id',adminRoleAuth, deleteComment)

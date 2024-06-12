@@ -85,7 +85,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8000/api/cities
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJuYW1lIjoiYnJpYW4iLCJleHAiOjE3MTgxMjI1MTF9.-AGmcrArAcW21lK4e4F_EorLXili_VyLImCge8I8YT8
 ###
 GET http://localhost:8000/api/cities/1
 
