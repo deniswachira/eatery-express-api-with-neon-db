@@ -20,4 +20,4 @@ restaurantRouter.put('/restaurants/:id',adminRoleAuth, updateRestaurant)
 restaurantRouter.delete('/restaurants/:id', adminRoleAuth, deleteRestaurant)
 
 //delete restaurant
-restaurantRouter.delete('/restaurants-with-orders/:id', adminRoleAuth, getRestaurantWithOrders)
+restaurantRouter.delete('/restaurants-with-orders', adminRoleAuth, getRestaurantWithOrders)
