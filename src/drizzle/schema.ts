@@ -135,6 +135,9 @@ export const order_table = pgTable('order_table', {
     updated_at: timestamp('updated_at').defaultNow(),
 });
 
+// order(1) --> restaurant(1)
+
+
 // comment table 11
 export const comment_table = pgTable('comment_table', {
     comment_id: serial('comment_id').primaryKey(),
@@ -251,6 +254,11 @@ export const order_user_relation = relations(order_table, ({ one,many }) => ({
     order_menus: many(order_menu_table),
     order_status: many(order_status_table),
     comments: many(comment_table)
+}));
+
+// restaurant(1) --> (N) orders
+export const restaurant_order_relation = relations(restaurant_table, ({ many }) => ({
+    orders: many(order_table)
 }));
 
 

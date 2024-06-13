@@ -1,5 +1,5 @@
 import {Hono} from "hono"
-import { deleteRestaurant, getRestaurantById, insertRestaurant, listRestaurants, updateRestaurant } from "./restaurant.controller";
+import { deleteRestaurant, getRestaurantById, getRestaurantWithOrders, insertRestaurant, listRestaurants, updateRestaurant } from "./restaurant.controller";
 import { adminRoleAuth, bothRolesAuth } from "../middleWare/bearAuth";
 
 export const restaurantRouter = new Hono();
@@ -18,3 +18,6 @@ restaurantRouter.put('/restaurants/:id',adminRoleAuth, updateRestaurant)
 
 //delete restaurant
 restaurantRouter.delete('/restaurants/:id', adminRoleAuth, deleteRestaurant)
+
+//delete restaurant
+restaurantRouter.delete('/restaurants-with-orders/:id', adminRoleAuth, getRestaurantWithOrders)

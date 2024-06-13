@@ -28,3 +28,11 @@ export const deleteRestaurantService = async(id:number) => {
     await db.delete(restaurant_table).where(eq(restaurant_table.restaurant_id,id));
     return "Restaurant deleted successfully 🎉"
 }
+
+export const getRestaurantWithOrdersService = async() => {
+    return await db.query.restaurant_table.findMany({
+        with: {
+            orders: true
+        }
+    })
+}

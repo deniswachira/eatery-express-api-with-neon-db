@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { deleteRestaurantService, getRestaurantByIdService, insertRestaurantService, restaurantsService, updateRestaurantService } from "./restaurant.service";
+import { deleteRestaurantService, getRestaurantByIdService, getRestaurantWithOrdersService, insertRestaurantService, restaurantsService, updateRestaurantService } from "./restaurant.service";
 
 //list restaurants
 export const listRestaurants = async (c:Context) => {
@@ -74,5 +74,16 @@ export const deleteRestaurant = async (c:Context) => {
         return c.text("Restaurant deleted successfully 🎉",200)
     } catch (error:any) {
         return c.text(error?.message,400)
+    }
+}
+
+//get restaurant with orders
+export const getRestaurantWithOrders = async (c:Context) => {
+    try {
+        const restaurantWithOrders = await getRestaurantWithOrdersService();
+        if (restaurantWithOrders === null) return c.text("No restaurant with order found");
+        return c.json(restaurantWithOrders, 200);
+    } catch (error: any) {
+        return c.text("Error while fetching states with cities");
     }
 }
