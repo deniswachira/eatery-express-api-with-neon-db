@@ -11,7 +11,7 @@ addressRouter.get('/addresses',adminRoleAuth, listAddresses)
 addressRouter.get('/addresses/:id',adminRoleAuth, getAddressById)
 
 //insert address
-addressRouter.post('/addresses',adminRoleAuth, insertAddress)
+addressRouter.post('/addresses', insertAddress)
 
 //update address
 addressRouter.put('/addresses/:id',adminRoleAuth, updateAddress)

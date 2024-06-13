@@ -30,14 +30,62 @@ export const deleteOrderService = async(id:number) => {
 }
 
 // get order details
-export const getOrderDetailsService = async (id:number):Promise<TOrderSelect | undefined> => {
+export const getOrderDetailsService = async (id:number):Promise<TOrder | undefined> => {
          return await db.query.order_table.findFirst({
-        where: eq(order_table.order_id, id),
+        where: eq(order_table.order_id, id),        
+        columns:{
+            order_id:true,
+            user_id:true,
+            driver_id:true,
+            restaurant_id:true,
+            delivery_address_id:true,
+            estimated_delivery_time:true,
+            price:true,
+            discount:true,
+            final_price:true,
+            comment:true,
+        },
         with:{
-            user:true,
-            driver:true,
-            restaurant:true,
-            delivey_address:true,
+            user:{
+                columns:{
+                    fullname:true,
+                    email:true,
+                    phone:true,
+
+                }
+            },
+            driver:{
+                columns:{
+                    driver_id:true,
+                    car_make:true,
+                    car_model:true,
+                    car_year:true,
+                    online:true,
+                },
+                with:{
+                    driver_details:{
+                        columns:{
+                            fullname:true,
+                            email:true,
+                            phone:true,
+                        }
+                    }
+                }
+            },
+            restaurant:{
+                columns:{
+                    name:true,
+                    street_address:true,
+                }
+            },
+            delivey_address:
+            {
+                columns:{
+                    street_address_1:true,
+                    zip_code:true,
+                    delivery_instructions:true,
+                }
+            },
         }
     })
 }

@@ -9,7 +9,7 @@ export const userRouter = new Hono();
 userRouter.get('/users', adminRoleAuth, listUsers)
 
 //get user by id
-userRouter.get('/users/:id', bothRolesAuth, getUserById)
+userRouter.get('/users/:id', adminRoleAuth, getUserById)
 
 //insert user
 userRouter.post('/users',zValidator('json',createUserValidator,(result,c)=>{
@@ -17,7 +17,7 @@ userRouter.post('/users',zValidator('json',createUserValidator,(result,c)=>{
     insertUser)
 
 //update user
-userRouter.put('/users/:id',bothRolesAuth, updateUser)
+userRouter.put('/users/:id',adminRoleAuth, updateUser)
 
 //delete user
 userRouter.delete('/users/:id',adminRoleAuth, deleteUser)

@@ -32,7 +32,11 @@ export const deleteStateService = async(id:number) => {
 export const getStatesWithCitiesService = async() =>{
   return await db.query.state_table.findMany({    
         with: {
-            cities: true
+            cities: {
+                columns: {
+                    city_name: true
+                }
+            }
         }
     });  
 }

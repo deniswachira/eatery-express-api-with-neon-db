@@ -46,7 +46,7 @@ export const user_table = pgTable( "user_table",{
         updated_at: timestamp("updated_at").defaultNow(),
 });
 
-export const roleEnum = pgEnum("role",['admin', 'user', 'restaurant_owner', 'driver']);
+export const roleEnum = pgEnum("role",['admin', 'user', 'restaurant_owner', 'driver', 'both']);
 
 //AuthOnUsersTable
 export const auth_on_users_table = pgTable('auth_on_users_table', {
@@ -217,6 +217,15 @@ export const user_address_relation = relations(user_table, ({ one,many }) => ({
     state: one(state_table,{
         fields: [user_table.user_id],
         references: [state_table.state_id]
+    }),
+    orders: many(order_table)
+}));
+
+// driver(1) --> (1) user
+export const driver_user_relation = relations(driver_table, ({ one,many }) => ({
+    driver_details: one(user_table, {
+        fields: [driver_table.user_id],
+        references: [user_table.user_id]
     }),
     orders: many(order_table)
 }));
