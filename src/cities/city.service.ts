@@ -13,18 +13,18 @@ export const getCityByIdService = async (id:number):Promise<TCitySelect | undefi
     })
 }
 
-export const insertCityService = async(city:TICity) => {
+export const insertCityService = async(city:TICity):Promise<string> => {
      await db.insert(city_table).values(city)
     // .returning({id:city_table.city_id}
         return "City created successfully 🎉";
 }
 
-export const updateCityService = async(id:number,city:TICity) => {
+export const updateCityService = async(id:number,city:TICity):Promise<string> => {
     await db.update(city_table).set(city).where(eq(city_table.city_id,id));
     return "City updated successfully 🎉"
 }
 
-export const deleteCityService = async(id:number) => {
+export const deleteCityService = async(id:number):Promise<string> => {
     await db.delete(city_table).where(eq(city_table.city_id,id));
     return "City deleted successfully 🎉"
 }

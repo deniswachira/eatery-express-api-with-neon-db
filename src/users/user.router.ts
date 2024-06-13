@@ -6,7 +6,7 @@ import { adminRoleAuth, bothRolesAuth } from "../middleWare/bearAuth";
 
 export const userRouter = new Hono();
 //get all users
-userRouter.get('/users', adminRoleAuth, listUsers)
+userRouter.get('/users', bothRolesAuth, listUsers)
 
 //get user by id
 userRouter.get('/users/:id', adminRoleAuth, getUserById)
