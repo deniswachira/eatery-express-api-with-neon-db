@@ -1,6 +1,7 @@
 import { Context } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { usersService,getUserByIdService,insertUserService, updateUserService, deleteUserService } from "./user.service";
+import { sendRegistrationEmail } from "../helperFunctions/helperFunction";
 
 //list user
 export const listUsers = async (c:Context) => {
@@ -32,12 +33,17 @@ export const insertUser = async (c:Context) => {
     const createdUser = await insertUserService(user);
     if(!createdUser) {
         return c.text("User not created 😒",400) 
+    }else{
+        const userEmail = user.email;
+        const eventName = "Account Creation";
+        //send email
+        const emailResponse = await sendRegistrationEmail(userEmail, eventName);
+        return c.json({msg: createdUser,emailResponse},201)
     } 
-    return c.json(createdUser,201)
     } catch (error:any) {
         return c.text(error?.message,400)
     }
-    
+      
 }
 
 //update user
