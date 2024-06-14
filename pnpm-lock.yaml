@@ -32,6 +32,9 @@ importers:
       hono:
         specifier: ^4.4.2
         version: 4.4.4
+      hono-rate-limiter:
+        specifier: ^0.3.0
+        version: 0.3.0(hono@4.4.4)
       prom-client:
         specifier: ^15.1.2
         version: 15.1.2
@@ -710,6 +713,11 @@ packages:
   has-unicode@2.0.1:
     resolution: {integrity: sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==}
 
+  hono-rate-limiter@0.3.0:
+    resolution: {integrity: sha512-QUS1N+DCZs8CKjpoHugvEvAp/+e+LUllPPnaIlATK9GyT26niQxn4H4V+O5kHwcsXjD3P3JOc0jMb7fnW6gpFQ==}
+    peerDependencies:
+      hono: ^4.1.1
+
   hono@4.4.4:
     resolution: {integrity: sha512-zO5+4K8yf1iuKhBZhwmpZ/0LzPMr8Zt1RugEGM1xvOqgh9DyLb7tslOtoBks4bmm5bIcLtzLCXUpYpXOkwpABA==}
     engines: {node: '>=16.0.0'}
@@ -1368,6 +1376,10 @@ snapshots:
       path-is-absolute: 1.0.1
 
   has-unicode@2.0.1: {}
+
+  hono-rate-limiter@0.3.0(hono@4.4.4):
+    dependencies:
+      hono: 4.4.4
 
   hono@4.4.4: {}
 

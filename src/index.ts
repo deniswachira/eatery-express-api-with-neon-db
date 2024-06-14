@@ -18,12 +18,15 @@ import { restaurantOwnerRouter } from './restauarant_onwers/restaurant_owner.rou
 import { menuItemRouter } from './menu_items/menu_item.router'
 import { categoryRouter } from './category/category.router'
 import { authRouter } from './auth/auth.router'
+import { limiter } from './middleWare/rateLimiter';
 
 const app = new Hono();
-const {printMetrics, registerMetrics} = prometheus()
+const {printMetrics, registerMetrics} = prometheus();
 
 //3rd party middleware
-app.use('*', registerMetrics)
+app.use('*', registerMetrics) //prometheus to monitor metrics
+app.use(limiter); //rate limiter
+
 //default routes
 app.get('/', async (c) => {
     try {
